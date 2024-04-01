@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from '@expo/vector-icons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
@@ -36,24 +36,23 @@ const SignUpScreen = () => {
 
 
     return (
-        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{ fontWeight: '600', fontSize: 25, marginBottom: 40, shadowOffset: { height: 1, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, }}>Hesap Oluştur</Text>
-            <TextInput onChangeText={setFirstname} value={firstname} placeholder='Firstname' style={{ width: '80%', borderWidth: 1, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
-            <TextInput onChangeText={setLastname} value={lastname} placeholder='Lastname' style={{ width: '80%', borderWidth: 1, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
-            <TextInput onChangeText={setEmail} value={email} placeholder='E-mail Adress' style={{ width: '80%', borderWidth: 1, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
-            <TextInput onChangeText={setPassword} value={password} placeholder='Password' style={{ width: '80%', borderWidth: 1, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
+        <ImageBackground source={require('../../assets/main.png')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <TextInput onChangeText={setFirstname} value={firstname} placeholder='Ad' placeholderTextColor='#fff' style={{fontStyle:'italic', fontSize:16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
+            <TextInput onChangeText={setLastname} value={lastname} placeholder='Soyad' placeholderTextColor='#fff' style={{fontStyle:'italic', fontSize:16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
+            <TextInput onChangeText={setEmail} value={email} placeholder='E-mail' placeholderTextColor='#fff' style={{fontStyle:'italic', fontSize:16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
+            <TextInput onChangeText={setPassword} value={password} placeholder='Şifre' placeholderTextColor='#fff' style={{fontStyle:'italic', fontSize:16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
             <TouchableOpacity onPress={handleRegister} style={{ marginTop: 50, marginBottom: 25, borderRadius: 20, borderWidth: 2, padding: 10, paddingHorizontal: 50, backgroundColor: "orange" }}>
                 <Text>
                     Kaydol
                 </Text>
             </TouchableOpacity>
-            <Text>
-                Google hesabını kullan
+            <Text style={{color:'#fff', fontStyle:'italic'}}>
+                Google hesabımı kullan
             </Text>
             <TouchableOpacity style={{ borderWidth: 1, borderRadius: 10, marginTop: 15, padding: 10 }}>
                 <AntDesign name="google" size={24} color="orange" />
             </TouchableOpacity>
-        </View>
+        </ImageBackground>
     )
 }
 

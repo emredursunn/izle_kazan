@@ -1,4 +1,4 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native'
 import React, { useState } from 'react'
 import { AuthStackParams } from '../navigation/AuthStackNav'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
@@ -28,16 +28,15 @@ const LoginScreen = ({ navigation }: Props) => {
     }
 
     return (
-        <View style={{ flex: 1 }}>
-            <View style={{ flex: 3, justifyContent: 'center', alignItems: 'center' }}>
-                <Text style={{ fontSize: 70, fontWeight: 'bold', shadowOffset: { height: 5, width: 5 }, shadowColor: 'gray', shadowOpacity: 1, }}>HELLO!</Text>
-                <Text style={{ fontSize: 18 }}>Giriş yapınız</Text>
+        <ImageBackground source={require('../../assets/main.png')} style={{ flex: 1 }}>
+            <View style={{ flex: 3, justifyContent: 'flex-end', alignItems: 'center' }}>
+                <Text style={{ color: 'orange', fontSize: 60, fontWeight: 'bold', shadowOffset: { height: 5, width: 5 }, shadowColor: 'gray', shadowOpacity: 1, }}>İZLE KAZAN</Text>
             </View>
             <View style={{ flex: 3, justifyContent: 'center', alignItems: 'center' }}>
-                <TextInput value={email} onChangeText={setEmail} placeholder='E-mail' style={{ width: '70%', borderWidth: 1, borderRadius: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, padding: 20, marginBottom: 20 }} />
-                <TextInput value={password} onChangeText={setPassword} placeholder='Password' style={{ width: '70%', borderWidth: 1, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1 }} />
+                <TextInput value={email} onChangeText={setEmail} placeholder='E-mail' placeholderTextColor='#fff' style={{ fontStyle: 'italic', color: '#fff', fontSize: 16, width: '70%', borderWidth: 2, borderRadius: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, padding: 20, marginBottom: 20 }} />
+                <TextInput value={password} onChangeText={setPassword} placeholder='Password' placeholderTextColor='#fff' secureTextEntry style={{ fontStyle: 'italic', color: '#fff', fontSize: 16, width: '70%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1 }} />
                 <TouchableOpacity style={{ alignSelf: 'flex-end', marginTop: 5, marginRight: 60 }}>
-                    <Text style={{ opacity: 0.4, fontStyle:'italic' }}>Şifremi unuttum?</Text>
+                    <Text style={{ fontStyle: 'italic', color: 'orange' }}>Şifremi unuttum?</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={handleLogin} style={{ marginTop: 50, borderRadius: 20, borderWidth: 2, padding: 10, paddingHorizontal: 50, backgroundColor: "orange" }}>
                     <Text>
@@ -46,17 +45,17 @@ const LoginScreen = ({ navigation }: Props) => {
                 </TouchableOpacity>
             </View>
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-                <Text>
+                <Text style={{ color: '#fff' }}>
                     Hesabınız yok mu?
                 </Text>
                 <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
-                    <Text style={{ fontWeight: 'bold', textDecorationLine: 'underline', fontStyle: 'italic' }}>
+                    <Text style={{ color: 'orange', fontWeight: 'bold', textDecorationLine: 'underline', fontStyle: 'italic' }}>
                         Kaydol
                     </Text>
                 </TouchableOpacity>
 
             </View>
-        </View>
+        </ImageBackground>
     )
 }
 

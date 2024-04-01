@@ -6,7 +6,7 @@ import {UserStackNav} from './UserStackNav';
 import {AuthStackNav} from './AuthStackNav';
 
 const RootStackNav = () => {
-    const isAuth = useSelector((state: RootState) => state.token.token);
+    const isAuth = true //useSelector((state: RootState) => state.token.token);
     return (
         <NavigationContainer>
             {isAuth ? <UserStackNav /> : <AuthStackNav />}

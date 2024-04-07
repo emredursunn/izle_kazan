@@ -21,10 +21,14 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.emredursunn.Giveaway"
     },
     "web": {
       "favicon": "./assets/favicon.png"
     }
+  },
+  "react-native-google-mobile-ads": {
+    "android_app_id": "ca-app-pub-9227165764995286~4082214574"
   }
 }

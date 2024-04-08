@@ -28,6 +28,7 @@ const MainScreen = ({ navigation }: Props) => {
 
 
   useEffect(() => {
+    //databaseden verileri çek
     setWelcomeVisible(true)
   }, [])
 
@@ -47,7 +48,9 @@ const MainScreen = ({ navigation }: Props) => {
 
     interstitial.load();
 
-    return unsubscribe;
+    return () => {
+      unsubscribe();
+    }
   }, []);
 
 
@@ -64,9 +67,9 @@ const MainScreen = ({ navigation }: Props) => {
     const unsubscribeLoaded = rewarded.addAdEventListener(RewardedAdEventType.LOADED, () => {
       rewarded.show()
       setTimeout(() => {
-        clearTimeout(timeoutId);
+        setLoading(false)
         setLocked(false)
-        setLoading(false);
+        clearTimeout(timeoutId)
       }, 100)
     });
     const unsubscribeEarned = rewarded.addAdEventListener(
@@ -75,6 +78,7 @@ const MainScreen = ({ navigation }: Props) => {
         console.log(reward)
         setJoinCount(prev => prev + 1);
         setDailyJoinCount(prev => prev + 1)
+        //database'e kaydet
       },
     );
 
@@ -83,12 +87,13 @@ const MainScreen = ({ navigation }: Props) => {
     const timeoutId = setTimeout(() => {
       setLocked(false);
       setLoading(false);
+      rewarded.removeAllListeners()
       Alert.alert("Reklam yüklenemedi veya zaman aşımı.");
-    }, 8000); // 8 saniye sonra zaman aşımı olacak.
+    }, 9000); // 8 saniye sonra zaman aşımı olacak.
 
     rewarded.load();
 
-    
+
 
     return () => {
       unsubscribeLoaded();
@@ -118,6 +123,11 @@ const MainScreen = ({ navigation }: Props) => {
     Alert.alert("Notunuz kaydedildi.")
   }
 
+  const resetDaily = () => {
+    setDailyJoinCount(0)
+  }
+
+
   return (
     <ImageBackground source={require('../../assets/cekilisekrani.png')} resizeMode='cover' style={{ flex: 1 }}>
       <View pointerEvents={locked ? 'none' : 'auto'} style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 20 }}>
@@ -132,7 +142,19 @@ const MainScreen = ({ navigation }: Props) => {
           </TouchableOpacity>
         </View>
 
-        <Text style={{ fontSize: 40, fontStyle: 'italic', color: 'black', alignSelf: 'center', marginBottom: 20, fontWeight: 'bold' }}>İZLE KAZAN</Text>
+        <View style={{ flexDirection: 'row' }}>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#faa916", fontWeight:'bold' }}>İ</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#6dd3ce", fontWeight:'bold' }}>Z</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#efca08", fontWeight:'bold' }}>L</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#e9724c", fontWeight:'bold' }}>E</Text>
+          <Text style={{ fontSize: 55 }}> </Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#8cb369", fontWeight:'bold' }}>K</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#99b2dd", fontWeight:'bold' }}>A</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#ff5964", fontWeight:'bold' }}>Z</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#00916e", fontWeight:'bold' }}>A</Text>
+          <Text style={{ fontSize: 55, fontStyle: 'italic', color: "#fc9e4f", fontWeight:'bold' }}>N</Text>
+
+        </View>
 
         <Text style={{ fontSize: 20, fontStyle: 'italic', color: '#fff', marginBottom: 20 }}>Toplam {joinCount} kez katıldın!</Text>
 
@@ -141,7 +163,7 @@ const MainScreen = ({ navigation }: Props) => {
             <ActivityIndicator size="large" color="#fff" />
           ) : (
             dailyJoinCount < 10 ? (
-              <TouchableOpacity onPress={handleWatchAd} style={{ padding: 10, backgroundColor: 'black', flexDirection: 'row', alignItems: 'center', borderRadius: 20 }}>
+              <TouchableOpacity onPress={handleWatchAd} style={{ padding: 10, backgroundColor: '#00916e', flexDirection: 'row', alignItems: 'center', borderRadius: 20 }}>
                 <Text style={{ color: '#fff', fontSize: 18, marginRight: 10 }}>KATIL</Text>
                 <Octicons name="video" size={24} color="white" />
               </TouchableOpacity>
@@ -209,7 +231,7 @@ const MainScreen = ({ navigation }: Props) => {
           <Text style={{ color: '#fff', fontStyle: 'italic', fontSize: 16 }}> Her pazar 19:00 instagram canlı yayınıyla açıklanır.</Text>
           <View style={{ flexDirection: 'row' }}>
             <Text style={{ color: '#fff', fontStyle: 'italic', fontSize: 20 }}> İnstagram: </Text>
-            <Text style={{ color: 'black', fontStyle: 'italic', fontSize: 20 }}> @izlekazann </Text>
+            <Text style={{ color: '#00916e', fontStyle: 'italic', fontSize: 20, fontWeight:'bold' }}> @izlekazann </Text>
           </View>
           <TouchableOpacity style={{ marginTop: 8, marginBottom: 50, width: 90, height: 50 }} onPress={() => console.log('Item 1')}>
             <Image source={require('../../assets/instagram.png')} resizeMode='cover' style={{ width: '100%', height: '100%' }} />

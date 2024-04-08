@@ -31,13 +31,13 @@ const ProfileScreen = () => {
 
     return (
         <ImageBackground source={require('../../assets/profilekrani.png')} style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <Text style={{fontSize:34, fontStyle:'italic', color:'black', marginBottom:20, fontWeight:'bold'}}>PROFİLİM</Text>
+            <Text style={{fontSize:34, fontStyle:'italic', color:'#00916e', marginBottom:20, fontWeight:'bold'}}>PROFİLİM</Text>
             <TextInput onChangeText={setFirstname} value={firstname} placeholder='Ad' placeholderTextColor='#fff' style={{ fontStyle: 'italic', fontSize: 16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
             <TextInput onChangeText={setLastname} value={lastname} placeholder='Soyad' placeholderTextColor='#fff' style={{ fontStyle: 'italic', fontSize: 16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
             <TextInput onChangeText={setEmail} value={email} placeholder='E-mail' placeholderTextColor='#fff' style={{ fontStyle: 'italic', fontSize: 16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
             <TextInput onChangeText={setNumber} value={number} placeholder='Telefon' placeholderTextColor='#fff' style={{ fontStyle: 'italic', fontSize: 16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
             <TextInput onChangeText={setAddress} value={address} placeholder='TAM ADRES' placeholderTextColor='#fff' style={{ fontStyle: 'italic', fontSize: 16, color: '#fff', width: '80%', borderWidth: 2, borderRadius: 20, padding: 20, shadowOffset: { height: 2, width: 0 }, shadowColor: 'gray', shadowOpacity: 1, marginBottom: 15 }} />
-            <TouchableOpacity onPress={handleSave} style={{ marginTop: 50, marginBottom: 25, borderRadius: 20, borderWidth: 2, padding: 10, paddingHorizontal: 50, backgroundColor: "black" }}>
+            <TouchableOpacity onPress={handleSave} style={{ marginTop: 50, marginBottom: 25, borderRadius: 20, borderWidth: 2, padding: 10, paddingHorizontal: 50, backgroundColor: "#00916e" }}>
                 <Text style={{color:'#fff'}}>
                     Kaydet
                 </Text>
